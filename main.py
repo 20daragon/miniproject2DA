@@ -26,15 +26,31 @@ data = pd.read_csv('happiness.csv', index_col='Countries')
 # Gets the last 5 or most unhappy countries back
 
 unhappy = data.tail(5)
+print("5 Most Unhappy Countries:")
 print(unhappy)
 
 #Gets the first 5 most happy countries back
 
 happy = data.head(5)
+print("5 Happiest Countries:")
 print(happy)
 
 
 #(10/10 points) Using matplotlib, graph this data in a way that will visually represent the data. Really try to build some fancy charts here as it will greatly help you in future homework assignments and in the final project.
+
+# Plots the graph for the most unhappy countries in comparison to the global index
+plt.figure(figsize=(10, 5))
+unhappy.plot(title="5 Most Unhappy Countries", kind='bar')
+plt.ylabel("Happiness Score")
+plt.tight_layout()
+plt.show()
+
+# Plots the graph for the most happy countires in comparison to the global index
+plt.figure(figsize=(10, 5))
+happy.plot(title="5 Happiest Countries", kind='bar')
+plt.ylabel("Happiness Score")
+plt.tight_layout()
+plt.show()
 
 #(10/10 points) Save these graphs in a folder called charts as PNG files. Do not upload these to your project folder, the project should save these when it executes. You may want to add this folder to your .gitignore file.
 
