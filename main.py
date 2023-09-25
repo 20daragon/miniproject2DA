@@ -8,6 +8,7 @@
 
 import pandas as pd
 import matplotlib.pyplot as plt
+from pathlib import Path
 
 #(20/20 points) Using a data source of your choice, such as data from data.gov or using the Faker package, generate or retrieve some data for creating basic statistics on. This will generally come in as json data, etc.
 #Think of some question you would like to solve such as:
@@ -35,6 +36,11 @@ happy = data.head(5)
 print("5 Happiest Countries:")
 print(happy)
 
+# Creates the charts folder
+try:
+    Path("charts").mkdir()
+except FileExistsError:
+    pass
 
 #(10/10 points) Using matplotlib, graph this data in a way that will visually represent the data. Really try to build some fancy charts here as it will greatly help you in future homework assignments and in the final project.
 
@@ -43,16 +49,39 @@ plt.figure(figsize=(10, 5))
 unhappy.plot(title="5 Most Unhappy Countries", kind='bar')
 plt.ylabel("Happiness Score")
 plt.tight_layout()
+
+# Saves chart
+plt.savefig("charts/unhappy_countries.png")
 plt.show()
+
+
 
 # Plots the graph for the most happy countires in comparison to the global index
 plt.figure(figsize=(10, 5))
 happy.plot(title="5 Happiest Countries", kind='bar')
 plt.ylabel("Happiness Score")
 plt.tight_layout()
+
+# Saves Chart
+plt.savefig("charts/happy_countries.png")
+plt.show()
+
+# Concatenation for comparison of happy and unhappy
+
+compare = pd.concat([happy, unhappy])
+
+# Plotting the comparison graph
+plt.figure(figsize=(12, 6))
+compare.plot(kind='bar', title="Comparison of 5 Happiest and 5 Unhappiest Countries")
+plt.ylabel("Happiness Score")
+plt.tight_layout()
+
+# Saves chart
+plt.savefig("charts/combined_countries.png")
 plt.show()
 
 #(10/10 points) Save these graphs in a folder called charts as PNG files. Do not upload these to your project folder, the project should save these when it executes. You may want to add this folder to your .gitignore file.
+
 
 #(10/10 points) There should be a minimum of 5 commits on your project, be sure to commit often!
 
