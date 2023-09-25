@@ -14,6 +14,7 @@ pip install pandas
 
 ```
 ## How to run
+While in a terminal window.
 ```
-
+run python main.py
 ```
